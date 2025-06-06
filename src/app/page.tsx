@@ -1,12 +1,19 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import Link from "next/link";
 import Image from "next/image";
 
+// Definindo o tipo dos filmes
+interface Filme {
+  id: number;
+  title: string;
+  poster_path: string;
+}
+
 function Home() {
-  const [filmes, setFilmes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [filmes, setFilmes] = useState<Filme[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function loadFilmes() {
@@ -56,7 +63,7 @@ function Home() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
-              <Link 
+              <Link
                 href={`/FilmDetail/${filme.id}`}
                 className="flex justify-center items-center py-2 text-white bg-blue-600 text-xl rounded-b-lg hover:bg-blue-700 transition-colors"
               >
