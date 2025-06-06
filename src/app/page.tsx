@@ -4,11 +4,16 @@ import api from "../services/api";
 import Link from "next/link";
 import Image from "next/image";
 
-// Definindo o tipo dos filmes
+// Tipo para um filme
 interface Filme {
   id: number;
   title: string;
   poster_path: string;
+}
+
+// Tipo para a resposta da API
+interface FilmeAPIResponse {
+  results: Filme[];
 }
 
 function Home() {
@@ -18,7 +23,7 @@ function Home() {
   useEffect(() => {
     async function loadFilmes() {
       try {
-        const response = await api.get("/movie/now_playing", {
+        const response = await api.get<FilmeAPIResponse>("/movie/now_playing", {
           params: {
             api_key: "99ef35a1fa028e3838d31788d996fbc9",
             language: "pt_BR",
@@ -50,7 +55,10 @@ function Home() {
       <div className="max-w-4xl mx-auto my-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filmes.map((filme) => (
-            <article key={filme.id} className="w-full bg-white p-4 rounded-md shadow-md">
+            <article
+              key={filme.id}
+              className="w-full bg-white p-4 rounded-md shadow-md"
+            >
               <strong className="block text-center text-xl mb-4 font-semibold">
                 {filme.title}
               </strong>
