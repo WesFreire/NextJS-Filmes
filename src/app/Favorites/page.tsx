@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
+import Image from "next/image";
 
 interface Filme {
   id: number;
   title: string;
+  poster_path?: string;
 }
 
 export default function Favoritos() {
@@ -25,40 +27,60 @@ export default function Favoritos() {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="min-h-screen bg-zinc-900 text-white px-4 py-10">
       <Toaster position="top-right" />
 
-      <h1 className="text-3xl font-bold text-center mb-6">Meus Filmes</h1>
+      <h1 className="text-4xl font-bold text-center mb-10">Meus Filmes</h1>
 
       {filmes.length === 0 ? (
-        <p className="text-center text-gray-600">
+        <p className="text-center text-gray-300">
           Você não possui nenhum filme no momento.
         </p>
       ) : (
-        <ul className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {filmes.map((item) => (
-            <li
+            <div
               key={item.id}
-              className="flex justify-between items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              className="bg-zinc-800 rounded-lg shadow-lg overflow-hidden flex flex-col"
             >
-              <span className="font-medium text-lg">{item.title}</span>
-              <div className="flex gap-2">
-                <Link
-                  href={`/FilmDetail/${item.id}`}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-                >
-                  Ver detalhes
-                </Link>
-                <button
-                  onClick={() => excluirFilme(item.id)}
-                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
-                >
-                  Excluir
-                </button>
+              {item.poster_path ? (
+                <div className="relative w-full h-[400px]">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="100vw"
+                  />
+                </div>
+              ) : (
+                <div className="h-[400px] flex items-center justify-center bg-zinc-700 text-gray-400">
+                  Sem imagem
+                </div>
+              )}
+
+              <div className="p-4 flex flex-col gap-3 flex-1 justify-between">
+                <h2 className="text-lg font-semibold text-center">
+                  {item.title}
+                </h2>
+                <div className="flex gap-2 justify-center mt-auto">
+                  <Link
+                    href={`/FilmDetail/${item.id}`}
+                    className="bg-blue-600 hover:bg-blue-700 transition-colors text-white px-4 py-2 rounded"
+                  >
+                    Ver detalhes
+                  </Link>
+                  <button
+                    onClick={() => excluirFilme(item.id)}
+                    className="bg-red-600 hover:bg-red-700 transition-colors text-white px-4 py-2 rounded"
+                  >
+                    Excluir
+                  </button>
+                </div>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </main>
   );
