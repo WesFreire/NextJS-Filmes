@@ -30,7 +30,7 @@ export default function FilmePage() {
           },
         });
         setFilme(response.data);
-      } catch (error) {
+      } catch {
         console.error("Filme não encontrado");
         router.push("/");
       } finally {
@@ -45,7 +45,7 @@ export default function FilmePage() {
     if (!filme) return;
 
     const minhaLista = localStorage.getItem("@filmes");
-    let filmesSalvos: Filme[] = minhaLista ? JSON.parse(minhaLista) : [];
+    const filmesSalvos: Filme[] = minhaLista ? JSON.parse(minhaLista) : [];
 
     if (filmesSalvos.some((f) => f.id === filme.id)) {
       toast.error("Esse filme já está na sua lista!");
