@@ -4,14 +4,12 @@ import api from "../services/api";
 import Link from "next/link";
 import Image from "next/image";
 
-// Tipo para um filme
 interface Filme {
   id: number;
   title: string;
   poster_path: string;
 }
 
-// Tipo para a resposta da API
 interface FilmeAPIResponse {
   results: Filme[];
 }
@@ -44,39 +42,41 @@ function Home() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center mt-5">
-        <h2 className="text-2xl">Carregando Filmes...</h2>
+      <div className="flex justify-center items-center min-h-screen bg-gray-900">
+        <h2 className="text-2xl text-white">Carregando Filmes...</h2>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="max-w-4xl mx-auto my-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="min-h-screen bg-gray-900 text-white py-10 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {filmes.map((filme) => (
             <article
               key={filme.id}
-              className="w-full bg-white p-4 rounded-md shadow-md"
+              className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
-              <strong className="block text-center text-xl mb-4 font-semibold">
-                {filme.title}
-              </strong>
-              <div className="relative w-full h-96">
+              <div className="relative w-full h-80">
                 <Image
                   src={`https://image.tmdb.org/t/p/original${filme.poster_path}`}
                   alt={filme.title}
                   fill
-                  className="object-cover rounded-t-lg"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 20vw, 20vw"
                 />
               </div>
-              <Link
-                href={`/FilmDetail/${filme.id}`}
-                className="flex justify-center items-center py-2 text-white bg-blue-600 text-xl rounded-b-lg hover:bg-blue-700 transition-colors"
-              >
-                Acessar
-              </Link>
+              <div className="p-4 flex flex-col justify-between h-32">
+                <strong className="block text-center text-lg font-semibold mb-2 line-clamp-2">
+                  {filme.title}
+                </strong>
+                <Link
+                  href={`/FilmDetail/${filme.id}`}
+                  className="block text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Acessar
+                </Link>
+              </div>
             </article>
           ))}
         </div>
