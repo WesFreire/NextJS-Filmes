@@ -1,65 +1,68 @@
-# 🎬 WesFlix
 
-Bem-vindo ao **WesFlix**, uma aplicação moderna para explorar filmes populares e salvar seus favoritos! Este projeto utiliza tecnologias modernas do ecossistema React/Next.js para fornecer uma navegação rápida, visual atrativo e uma experiência interativa ao usuário.
+# WesFlix 🎬
+
+Bem-vindo ao **WesFlix**, uma aplicação de catálogo de filmes construída com Next.js e Tailwind CSS. 
+Explore detalhes dos filmes mais populares, salve seus favoritos e aproveite uma experiência simples e responsiva.
 
 ---
 
 ## ✨ Sobre o Projeto
 
-O **WesFlix** é uma SPA (Single Page Application) desenvolvida com **Next.js** (App Router) que consome dados da [API do TMDB](https://www.themoviedb.org/documentation/api) para exibir uma galeria de filmes, com páginas de detalhes e um sistema de favoritos armazenado localmente no navegador.
-
-Foi criado com o objetivo de praticar o consumo de APIs, roteamento com o App Router, uso de imagens otimizadas, estilização com Tailwind CSS e controle de estado no navegador.
+O **WesFlix** foi criado com o objetivo de fornecer uma plataforma leve e funcional para listar filmes, 
+visualizar detalhes e gerenciar uma lista de favoritos usando o armazenamento local do navegador. 
+A aplicação utiliza dados da **API do TMDB** e é ideal como estudo prático de Next.js e consumo de APIs.
 
 ---
 
 ## 🚀 Funcionalidades Implementadas
 
-### 📺 Página Inicial
+### 🏠 Página Inicial
 
-- Lista dinâmica de filmes populares da API do TMDB.
-- Imagens em alta resolução (poster e backdrop).
-- Layout responsivo com grid adaptável.
+- Lista de filmes populares carregados dinamicamente da API.
+- Cards com imagens, títulos e botões de detalhes.
 
-### 🎞️ Detalhes do Filme
+### 🎞️ Página de Detalhes do Filme
 
-- Página individual com informações completas do filme: título, sinopse, nota, imagem de fundo.
-- Visual moderno com destaque para a imagem do backdrop.
-- Botão de **adicionar/remover dos favoritos**.
+- Visualização de banner (poster completo), título e sinopse.
+- Informações detalhadas do filme.
+- Botão para adicionar/remover da lista de favoritos.
 
-### ❤️ Meus Favoritos
+### ⭐ Lista de Favoritos
 
-- Página para listar os filmes salvos pelo usuário.
-- Layout em **cards com poster**, nome e ações.
-- Botões para **ver detalhes** ou **remover** da lista.
+- Página dedicada com todos os filmes salvos pelo usuário.
+- Opção para visualizar detalhes ou excluir da lista.
 
-### 💡 Funcionalidades Extras
+### 🔄 Armazenamento Local (localStorage)
 
-- Armazenamento local de favoritos com `localStorage`.
-- Toasts com feedback usando `react-hot-toast`.
-- UI responsiva e acessível com Tailwind CSS.
-- Navegação fluida com o App Router do Next.js.
+- Persistência de favoritos entre sessões usando o navegador.
+
+### 📱 Layout Responsivo
+
+- Estilizado com **Tailwind CSS** para adaptação em diferentes tamanhos de tela.
+- Design moderno e minimalista.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Framework Principal:** Next.js (App Router)
+- **Framework Principal:** Next.js 14 (App Router)
 - **Linguagem:** TypeScript
 - **Estilização:** Tailwind CSS
-- **Ícones & Feedback:** React Icons, React Hot Toast
-- **Imagens Otimizadas:** Next/Image
-- **API de Dados:** The Movie Database (TMDB)
+- **Notificações:** react-hot-toast
+- **Ícones:** React Icons
+- **API de Dados:** [The Movie Database (TMDB)](https://www.themoviedb.org/)
+- **Deploy:** Vercel (recomendado)
 
 ---
 
 ## 🏁 Começando
 
+Siga estas instruções para obter uma cópia do projeto rodando na sua máquina local para desenvolvimento e testes.
+
 ### ✅ Pré-requisitos
 
-- Node.js v18 ou superior  
+- [Node.js](https://nodejs.org) (versão 18.x ou superior recomendada)
 - npm ou yarn
-
----
 
 ### ⚙️ Instalação
 
@@ -70,31 +73,56 @@ git clone https://github.com/seu-usuario/wesflix.git
 cd wesflix
 ```
 
-Instale as dependências:
+Instale todas as dependências do projeto:
 
-bash
-Copy
-Edit
+Com npm:
+
+```bash
 npm install
-# ou
+```
+
+Ou com yarn:
+
+```bash
 yarn install
-Crie um arquivo .env.local com sua chave da API do TMDB:
+```
 
-ini
-Copy
-Edit
+### 📦 Instalação Manual de Dependências (caso necessário)
+
+```bash
+npm install react-hot-toast react-icons
+```
+
+### 🔑 Configuração da API do TMDB
+
+Crie um arquivo `.env.local` na raiz do projeto e adicione sua chave de API do TMDB:
+
+```env
 NEXT_PUBLIC_TMDB_API_KEY=sua_api_key_aqui
-▶️ Executando o Projeto
-Para rodar localmente em ambiente de desenvolvimento:
+```
 
-bash
-Copy
-Edit
+Você pode obter sua chave gratuita em [https://www.themoviedb.org/](https://www.themoviedb.org/).
+
+### ▶️ Rodando o Servidor de Desenvolvimento
+
+Com npm:
+
+```bash
 npm run dev
-# ou
+```
+
+Ou com yarn:
+
+```bash
 yarn dev
-Abra o navegador em: http://localhost:3000
+```
 
-🌐 Deploy
-Você pode fazer o deploy facilmente usando a Vercel, que oferece suporte nativo a projetos Next.js com App Router.
+Abra [http://localhost:3000](http://localhost:3000) no navegador para visualizar o projeto.
 
+A aplicação será recarregada automaticamente sempre que você fizer alterações nos arquivos.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença MIT.
