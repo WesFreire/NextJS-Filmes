@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🎬 WesFlix
+Bem-vindo ao WesFlix, uma aplicação moderna para explorar filmes populares e salvar seus favoritos! Este projeto utiliza tecnologias modernas do ecossistema React/Next.js para fornecer uma navegação rápida, visual atrativo e uma experiência interativa ao usuário.
 
-## Getting Started
+✨ Sobre o Projeto
+O WesFlix é uma SPA (Single Page Application) desenvolvida com Next.js (App Router) que consome dados da API do TMDB para exibir uma galeria de filmes, com páginas de detalhes e um sistema de favoritos armazenado localmente no navegador.
 
-First, run the development server:
+Foi criado com o objetivo de praticar o consumo de APIs, roteamento com o App Router, uso de imagens otimizadas, estilização com Tailwind CSS e controle de estado no navegador.
 
-```bash
+🚀 Funcionalidades Implementadas
+📺 Página Inicial:
+Lista dinâmica de filmes populares da API do TMDB.
+
+Imagens em alta resolução (poster e backdrop).
+
+Layout responsivo com grid adaptável.
+
+🎞️ Detalhes do Filme:
+Página individual com informações completas do filme: título, sinopse, nota, imagem de fundo.
+
+Visual moderno com destaque para a imagem do backdrop.
+
+Botão de adicionar/remover dos favoritos.
+
+❤️ Meus Favoritos:
+Página para listar os filmes salvos pelo usuário.
+
+Layout em cards com poster, nome e ações.
+
+Botões para ver detalhes ou remover da lista.
+
+💡 Funcionalidades Extras:
+Armazenamento local de favoritos com localStorage.
+
+Toasts com feedback usando react-hot-toast.
+
+UI responsiva e acessível com Tailwind CSS.
+
+Navegação fluida com o App Router do Next.js.
+
+🛠️ Tecnologias Utilizadas
+Framework Principal: Next.js (App Router)
+
+Linguagem: TypeScript
+
+Estilização: Tailwind CSS
+
+Ícones & Feedback: React Icons, React Hot Toast
+
+Imagens Otimizadas: Next/Image
+
+API de Dados: The Movie Database (TMDB)
+
+🏁 Começando
+✅ Pré-requisitos
+Node.js v18 ou superior
+
+npm ou yarn
+
+⚙️ Instalação
+Clone o repositório:
+
+bash
+Copy
+Edit
+git clone https://github.com/seu-usuario/wesflix.git
+cd wesflix
+Instale as dependências:
+
+bash
+Copy
+Edit
+npm install
+# ou
+yarn install
+Crie um arquivo .env.local com sua chave da API do TMDB:
+
+ini
+Copy
+Edit
+NEXT_PUBLIC_TMDB_API_KEY=sua_api_key_aqui
+▶️ Executando o Projeto
+Para rodar localmente em ambiente de desenvolvimento:
+
+bash
+Copy
+Edit
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Abra o navegador em: http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🌐 Deploy
+Você pode fazer o deploy facilmente usando a Vercel, que oferece suporte nativo a projetos Next.js com App Router.
