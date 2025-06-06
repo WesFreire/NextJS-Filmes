@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import api from '../../../services/api';
-import toast, { Toaster } from 'react-hot-toast';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import api from "../../../services/api";
+import toast, { Toaster } from "react-hot-toast";
+import Image from "next/image";
 
 interface Filme {
   id: number;
@@ -25,14 +25,14 @@ export default function FilmePage() {
       try {
         const response = await api.get(`/movie/${id}`, {
           params: {
-            api_key: '99ef35a1fa028e3838d31788d996fbc9',
-            language: 'pt-BR',
+            api_key: "99ef35a1fa028e3838d31788d996fbc9",
+            language: "pt-BR",
           },
         });
         setFilme(response.data);
       } catch (error) {
-        console.error('Filme não encontrado');
-        router.push('/');
+        console.error("Filme não encontrado");
+        router.push("/");
       } finally {
         setLoading(false);
       }
@@ -44,17 +44,17 @@ export default function FilmePage() {
   function salvarFilme() {
     if (!filme) return;
 
-    const minhaLista = localStorage.getItem('@filmes');
+    const minhaLista = localStorage.getItem("@filmes");
     let filmesSalvos: Filme[] = minhaLista ? JSON.parse(minhaLista) : [];
 
     if (filmesSalvos.some((f) => f.id === filme.id)) {
-      toast.error('Esse filme já está na sua lista!');
+      toast.error("Esse filme já está na sua lista!");
       return;
     }
 
     filmesSalvos.push(filme);
-    localStorage.setItem('@filmes', JSON.stringify(filmesSalvos));
-    toast.success('Filme salvo com sucesso!');
+    localStorage.setItem("@filmes", JSON.stringify(filmesSalvos));
+    toast.success("Filme salvo com sucesso!");
   }
 
   if (loading) {
@@ -95,7 +95,8 @@ export default function FilmePage() {
       <p className="text-gray-700 mb-4">{filme.overview}</p>
 
       <p className="text-lg font-medium mb-6">
-        Avaliação: <span className="text-yellow-600">{filme.vote_average} / 10</span>
+        Avaliação:{" "}
+        <span className="text-yellow-600">{filme.vote_average} / 10</span>
       </p>
 
       <div className="flex gap-4 flex-wrap">
@@ -107,7 +108,7 @@ export default function FilmePage() {
         </button>
         <a
           href={`https://youtube.com/results?search_query=${encodeURIComponent(
-            filme.title + ' Trailer'
+            filme.title + " Trailer"
           )}`}
           target="_blank"
           rel="noopener noreferrer"
